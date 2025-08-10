@@ -1,0 +1,53 @@
+<div id="header" class="lcars-row header">
+
+  <!-- ELBOW -->
+  <div class="lcars-elbow left-bottom lcars-periwinkle-bg "></div>
+
+  <!-- BAR WITH TITLE -->
+  <div class="lcars-bar horizontal lcars-periwinkle-bg ">
+    <div class="lcars-title lcars-text right">OpenFantasyMap</div>
+  </div>
+
+  <!-- ROUNDED EDGE DECORATED -->
+  <div class="lcars-bar horizontal lcars-periwinkle-bg right-end decorated">
+  </div>
+
+</div>
+<div class="lcars-row" style="position:relative;  width: 100vw">
+  <div class="lcars-column lcars-u-1">
+    <div class="info lcars-element lcars-u-1-6 lcars-text lcars-atomic-tangerine-bg">
+      OpenFantasyMap and FantasyMaps are a projects developed by OpenHistoryMap to create a non conventional use case
+      for Digital Humanities and Public History.
+    </div>
+    <a class="lcars-element lcars-text lcars-cosmic-bg lcars-white-color" href="https://www.fantasymaps.org">MORE INFO</a>
+    <a class="lcars-element lcars-text lcars-indigo-bg button" href="https://www.patreon.com/openfantasymap"
+      target="_blank" title="Help us keep this project alive"><img
+        src="/assets/images/Digital-Patreon-Logo_FieryCoral.png"
+        style="width:36px; left:-6px; top: -6px; position: relative;"></a>
+    <a class="lcars-element lcars-text lcars-indigo-bg button" href="https://foundryvtt.com/packages/ofm-map-canvas"
+      target="_blank" title="Use this and other OFM maps on FoundryVTT"><img src="/assets/images/fvtt-solid-512.png"
+        style="width:36px; left:-6px; top: -6px; position: relative;"></a>
+
+    <div class="lcars-bar  fill lcars-atomic-tangerine-bg decorated"></div>
+    <div class="lcars-bar vertical spacer"></div>
+  </div>
+  <div class="lcars-column lcars-u-15">
+    <div id="padder" class="lcars-row">
+
+      <div class="lcars-row">
+          <div id="ohm_timelines">
+              <div class="lcars-column" style="margin-bottom: 10px">
+                  <div class="lcars-row"  *ngFor="let tl of timelines" >
+                  <div class="lcars-bracket lcars-periwinkle-bg left"></div>
+            <button class="lcars-element button lcars-text lcars-{{tl.color}}-bg lcars-black-color lcars-u-2-2"
+              target="_blank" [style.display]="'block'" [style.background]="tl.bg"
+              [style.color]="tl.color" [style.background-image]="tl.bgimg" 
+              [routerLink]="[tl.url, tl.date, tl.base.zoom, tl.base.lat, tl.base.lng]">{{tl.name}}</button>
+              <div class="lcars-bracket lcars-periwinkle-bg right hollow"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

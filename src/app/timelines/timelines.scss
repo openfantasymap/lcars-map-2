@@ -1,0 +1,35 @@
+
+#padder {
+    padding-left:25px;
+}
+#ohm_timelines {
+    width: 100%;
+    height: calc(100vh - 72px - 72px - 5px);
+    overflow: auto;
+    
+}
+
+
+mat-grid-list{
+    width: 800px;
+    margin-left:auto;
+    margin-right:auto;
+}
+mat-grid-tile {
+    background: darkred;
+  }
+  .sidebar {
+      width: 256px;
+      //background-color: rgb(109, 62, 0);
+      color: white;
+  }
+  
+
+.info{
+    padding: 15px;
+}
+
+button{
+    border: 0;
+    text-transform: uppercase;
+}

@@ -1,0 +1,136 @@
+#ohm_map {
+    height: calc(100vh - 85px - 64px - 2px - 19px - 58px);
+    width: calc(100vw - 120px);
+}
+
+#deckbox{
+    position: absolute;
+    left: 132px;
+    top: 200px;
+    background: black;
+    width: 151px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+#infobox{
+    position: absolute;
+    top: 36px;
+    left: 133px;
+    z-index: 200;
+    width: 276px;
+}
+#searchbox{
+    position: absolute;
+    top: 36px;
+    left: 133px;
+    z-index: 200;
+    width: 450px
+    
+}
+#legendbox{
+    position: absolute;
+    top: 36px;
+    left: 133px;
+    z-index: 200;
+    width: 276px
+    
+}
+#toolbox{
+    position: absolute;
+    top: 36px;
+    left: 133px;
+    z-index: 200;
+    width: 276px
+    
+}
+
+input{
+    text-transform: uppercase;
+    width: 100%;
+    /* height: 100%; */
+    color: black;
+    font-family: "Antonio", "Helvetica Neue", sans-serif;
+    text-align: right;
+    top: -1px;
+    position: relative;
+    border: 0;
+    margin: 0;
+}
+
+input:focus{
+    outline:none;
+}
+
+#visualization {
+    width: calc(100vw - 5px);
+    max-height: 83px;
+    border: 1px solid lightgray;
+}
+
+.vis-item.politcs-rome {
+    background-color: red;
+}
+button{
+    border: 0;
+}
+
+.sidebar {
+    width: 256px;
+    background-color: #3f51b5;
+    color: white;
+}
+
+.info{
+    padding: 16px;
+    text-transform: uppercase;
+}
+
+#ofm_attribution{
+    position:absolute;
+    bottom:86px;
+    right: 0;
+    text-align: right;
+    background-color: rgba(200,200,200,0.5);
+    font-size: x-small;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 3px;
+}
+
+.mat-subheader{
+    font-size: large;
+    color:white;
+}
+
+.mat-list-item-content{
+    font-size: small;
+    color: white;
+}
+
+#timebar{
+    position:fixed;
+    margin-left:calc(50vw - 150px);
+    width: 300px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    bottom: 104px;
+    background-color: #212121;
+}
+
+mat-sidenav-container{
+    top: 80px;
+    height: calc(100vh - 200px);
+}
+
+.hidden{
+    display: none;
+}
+
+.circle{
+    display: block;
+    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+    margin: 1px;
+}
