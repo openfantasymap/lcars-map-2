@@ -308,6 +308,7 @@ export class MapComponent implements OnInit, AfterContentInit, OnDestroy {
   ngOnInit(): void {
     this.http.get('assets/info.json').subscribe(data => {
       this.infoData = data;
+      this.cdr.markForCheck();
     })
     maplibregl.accessToken = 'pk.eyJ1IjoiYWJyaWNrbyIsImEiOiJjanRkajJ4dzYwZGcwNDNvOGQybnZ2aWU0In0.dHeKsAVs3BmZ0biKTOi7wg';
 
@@ -373,6 +374,8 @@ export class MapComponent implements OnInit, AfterContentInit, OnDestroy {
           this.http.get(s._options.data.replace('{atDate}', this.atDate)).subscribe(data => {
             try {
               s.setData(data);
+              
+          this.cdr.markForCheck();
             } catch (ex) {
               console.log(ex);
             }
@@ -390,6 +393,8 @@ export class MapComponent implements OnInit, AfterContentInit, OnDestroy {
             this.http.get(s._options.data.replace('{deck}', this.currentDeck)).subscribe(data => {
               try {
                 s.setData(data);
+                
+                this.cdr.markForCheck();
               } catch (ex) {
                 console.log(ex);
               }
