@@ -111,9 +111,11 @@
     <div class="lcars-bracket left"></div>
 
     <div class="lcars-column">
-        <button class="lcars-element lcars-text lcars-dodger-blue-bg button" *ngFor="let o of ofm_meta.decks|deck" (click)="setDeck(o.key)">
-            {{o.value.name}}
+        @for(deck of ofm_meta.decks|deck; track deck.id){
+        <button class="lcars-element lcars-text lcars-dodger-blue-bg button" (click)="setDeck(deck.id)">
+            {{deck.value.name}}
         </button>
+        }
     </div>
 </div>
 

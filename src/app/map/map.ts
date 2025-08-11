@@ -31,16 +31,15 @@ declare const turf: any;
 })
 
 export class DeckPipe implements PipeTransform{
-  private _differs!: KeyValueDiffers;
-  constuctor(differs: KeyValueDiffers){
-    this._differs = differs;
-  }
-  transform(value: any, args?: any): {key: string, value: any}[] {
-    const pipe = new KeyValuePipe(this._differs);
-    return pipe.transform<string, any>(value, args);
-
+  transform(value: any, args?: any): {id: string, value: any}[] {
+    let ret = [];
+    for(let k of Object.keys(value)){
+      ret.push({id: k, value: value[k]});
+    }
+    return ret;
   }
 }
+
 
 @Component({
   selector: 'app-map',
@@ -52,7 +51,7 @@ export class DeckPipe implements PipeTransform{
     MatToolbarModule, CommonModule,
     MatButtonModule,
     DecimaldatePipe, DatePipe, 
-    NicedatePipe, DeckPipe, RouterModule,
+    NicedatePipe, DeckPipe, RouterModule
 
   ],
   templateUrl: './map.html',
@@ -176,7 +175,7 @@ export class MapComponent implements OnInit, AfterContentInit, OnDestroy {
 
   setDeck(deck: string){
     this.currentDeck=deck;
-    this.changeUrl('deck');
+    this.changeUrl(deck);
   }
 
   ngAfterContentInit(): void {
@@ -193,12 +192,6 @@ export class MapComponent implements OnInit, AfterContentInit, OnDestroy {
       preserveDrawingBuffer: true,
       transformRequest: (url: string, resourceType: string) => {
         let nurl = url;
-        if (isDevMode()) {
-          nurl = nurl.replace('https://tiles.fantasymaps.org/' + this.tl, this.ts + this.tl);
-          nurl = nurl.replace('https://a.tiles.fantasymaps.org/' + this.tl, this.ts + this.tl);
-          nurl = nurl.replace('https://b.tiles.fantasymaps.org/' + this.tl, this.ts + this.tl);
-          nurl = nurl.replace('https://c.tiles.fantasymaps.org/' + this.tl, this.ts + this.tl);
-        }
         return {
           url: nurl.replace('{atDate}', this.atDate.toString()).replace('%7BatDate%7D', this.atDate.toString()).replace('{deck}', this.currentDeck).replace('%7Bdeck%7D', this.currentDeck)
         };
@@ -322,6 +315,7 @@ export class MapComponent implements OnInit, AfterContentInit, OnDestroy {
     this.ofm.getMap(this.ar.snapshot.params['timeline']).subscribe((data: any) => {
       this.title = data.name;
       this.ofm_meta = data.metadata.ofm;
+      this.cdr.markForCheck();
 
       for (let l of this.ofm_meta.togglable) {
         this.layers[l.name] = true;
