@@ -1,6 +1,7 @@
 FROM node:24 as build
 WORKDIR /app
 COPY package*.json /app/
+RUN npm install -g @angular/cli
 RUN npm install
 COPY . /app
 ARG configuration=production
@@ -12,7 +13,7 @@ FROM nginx:alpine
 
 WORKDIR /usr/share/nginx/html/
 
-COPY --from=build /app/dist/out/ .
+COPY --from=build /app/dist/out/browser .
 
 RUN chmod 777 *
 

@@ -1,0 +1,1 @@
+docker buildx  build --load  -t ofdistantworlds/lcars . && docker push ofdistantworlds/lcars

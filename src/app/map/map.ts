@@ -385,7 +385,7 @@ export class MapComponent implements OnInit, AfterContentInit, OnDestroy {
 
           const s = this.map.getSource(tm.source);
           console.log(s);
-          
+          this.cdr.markForCheck();
           if (s.type === 'geojson') {
             this.http.get(s._options.data.replace('{deck}', this.currentDeck)).subscribe(data => {
               try {
@@ -393,13 +393,19 @@ export class MapComponent implements OnInit, AfterContentInit, OnDestroy {
               } catch (ex) {
                 console.log(ex);
               }
+              
+              this.cdr.markForCheck();
             })
           }        
           this.map.style.getSource('base').load();
+          
+          this.cdr.markForCheck();
         }
       }
     }
     this.events = this.ohm.getEvents(this.tl, this.atDate, 10);
+    
+          this.cdr.markForCheck();
   }
 
   changeStyle(style: string): void {
